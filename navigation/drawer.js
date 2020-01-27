@@ -14,13 +14,13 @@ import ChadVascScreen from "../screens/ChadVascScreen";
 
 const RootDrawerNavigator = createDrawerNavigator(
   {
-    Dropptakt: {
-      screen: DropScreen,
+    ChadVasc: {
+      screen: ChadVascScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "Dropptakt"
+        title: "CHA2DS2-VASc"
       }
     },
     Apgar: {
@@ -32,15 +32,16 @@ const RootDrawerNavigator = createDrawerNavigator(
         title: "Apgar"
       }
     },
-    ChadVasc: {
-      screen: ChadVascScreen,
+    Dropptakt: {
+      screen: DropScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "CHA2DS2-VASc"
+        title: "Dropptakt"
       }
     },
+
     DVTscore: {
       screen: DVTscoreScreen,
       navigationOptions: {
