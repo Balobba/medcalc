@@ -19,7 +19,7 @@ const ChadVascScreen = ({ navigation }) => {
   ]);
 
   const result = () => {
-    let res = { points: 0, procent: 0, recommended: 'Ingen behandling' };
+    let res = { points: 0, procent: 0, recommended: 'ingen behandling' };
     let calcProcent = [0, 1.3, 2.2, 3.2, 4.0, 6.7, 9.8, 9.6, 6.7, 15.2];
 
     marks.forEach(mark => {
@@ -82,8 +82,10 @@ const ChadVascScreen = ({ navigation }) => {
       </View>
       <View>
         <Text>{result().points} poäng</Text>
-        <Text>{result().procent}%</Text>
-        <Text>{result().recommended}</Text>
+        <Text>
+          Årlig risk för tromboembolisk händelse är {result().procent}%
+        </Text>
+        <Text>Rekommendationer är {result().recommended}</Text>
       </View>
     </View>
   );
