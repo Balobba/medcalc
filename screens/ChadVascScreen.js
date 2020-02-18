@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center'
   },
-  checkbox: { padding: 20, marginRight: 30 }
+  checkbox: { padding: 10, marginRight: 30, marginLeft: 10 }
 });
 
 export default ChadVascScreen;

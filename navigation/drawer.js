@@ -14,13 +14,13 @@ import ChadVascScreen from '../screens/ChadVascScreen';
 
 const RootDrawerNavigator = createDrawerNavigator(
   {
-    DVTscore: {
-      screen: DVTscoreScreen,
+    Promille: {
+      screen: PromilleScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: 'DVT-Score'
+        title: 'Promillehalt'
       }
     },
     Apgar: {
@@ -50,13 +50,13 @@ const RootDrawerNavigator = createDrawerNavigator(
         title: 'Dropptakt'
       }
     },
-    Promille: {
-      screen: PromilleScreen,
+    DVTscore: {
+      screen: DVTscoreScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: 'Promillehalt'
+        title: 'DVT-Score'
       }
     },
 
