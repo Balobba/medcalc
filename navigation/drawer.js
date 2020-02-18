@@ -1,26 +1,26 @@
-import React from "react";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import { createAppContainer } from "react-navigation";
-import TestScreen from "../screens/TestScreen";
-import AboutScreen from "../screens/AboutScreen";
-import { MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
-import DropScreen from "../screens/DropScreen";
-import ApgarScreen from "../screens/ApgarScreen";
+import React from 'react';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createAppContainer } from 'react-navigation';
+import TestScreen from '../screens/TestScreen';
+import AboutScreen from '../screens/AboutScreen';
+import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
+import DropScreen from '../screens/DropScreen';
+import ApgarScreen from '../screens/ApgarScreen';
 
-import PromilleScreen from "../screens/PromilleScreen";
-import DVTscoreScreen from "../screens/DVTscoreScreen";
-import ChadVascScreen from "../screens/ChadVascScreen";
+import PromilleScreen from '../screens/PromilleScreen';
+import DVTscoreScreen from '../screens/DVTscoreScreen';
+import ChadVascScreen from '../screens/ChadVascScreen';
 
 const RootDrawerNavigator = createDrawerNavigator(
   {
-    ChadVasc: {
-      screen: ChadVascScreen,
+    DVTscore: {
+      screen: DVTscoreScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "CHA2DS2-VASc"
+        title: 'DVT-Score'
       }
     },
     Apgar: {
@@ -29,7 +29,16 @@ const RootDrawerNavigator = createDrawerNavigator(
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "Apgar"
+        title: 'Apgar'
+      }
+    },
+    ChadVasc: {
+      screen: ChadVascScreen,
+      navigationOptions: {
+        drawerIcon: () => (
+          <MaterialIcons name="accessibility" size={20} style={styles.icons} />
+        ),
+        title: 'CHA2DS2-VASc'
       }
     },
     Dropptakt: {
@@ -38,17 +47,7 @@ const RootDrawerNavigator = createDrawerNavigator(
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "Dropptakt"
-      }
-    },
-
-    DVTscore: {
-      screen: DVTscoreScreen,
-      navigationOptions: {
-        drawerIcon: () => (
-          <MaterialIcons name="accessibility" size={20} style={styles.icons} />
-        ),
-        title: "DVT-Score"
+        title: 'Dropptakt'
       }
     },
     Promille: {
@@ -57,7 +56,7 @@ const RootDrawerNavigator = createDrawerNavigator(
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: "Promillehalt"
+        title: 'Promillehalt'
       }
     },
 
@@ -76,17 +75,17 @@ const RootDrawerNavigator = createDrawerNavigator(
         drawerIcon: () => (
           <MaterialIcons name="info" size={20} style={styles.icons} />
         ),
-        title: "Om"
+        title: 'Om'
       }
     }
   },
-  { contentOptions: { activeTintColor: "#ff5252" } }
+  { contentOptions: { activeTintColor: '#ff5252' } }
 );
 
 export default createAppContainer(RootDrawerNavigator);
 
 const styles = StyleSheet.create({
   icons: {
-    color: "#ff5252"
+    color: '#ff5252'
   }
 });
