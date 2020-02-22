@@ -36,6 +36,7 @@ const Promille = ({ navigation }) => {
     <ScrollView
       keyboardShouldPersistTaps="handled"
       contentContainerStyle={styles.container}
+      scrollEnabled={false}
     >
       <Header navigation={navigation} />
 
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     width: 150,
-    marginBottom: Platform.OS === 'ios' ? 50 : 0
+    marginBottom: Platform.OS === 'ios' ? 100 : 0
   },
   resultView: {
     marginTop: Platform.OS === 'ios' ? 150 : 0

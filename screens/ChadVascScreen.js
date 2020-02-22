@@ -56,6 +56,7 @@ const ChadVascScreen = ({ navigation }) => {
     <ScrollView
       keyboardShouldPersistTaps="handled"
       contentContainerStyle={styles.container}
+      scrollEnabled={false}
     >
       <Header navigation={navigation} />
       <View style={styles.fieldView}>
