@@ -1,6 +1,6 @@
-import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Header = ({ navigation }) => {
   const openMenu = () => {
@@ -12,7 +12,7 @@ const Header = ({ navigation }) => {
     <View style={styles.header}>
       <MaterialIcons
         name="menu"
-        size={28}
+        size={36}
         style={styles.burger}
         onPress={openMenu}
       />
@@ -24,14 +24,14 @@ export default Header;
 
 const styles = StyleSheet.create({
   header: {
-    width: "100%",
+    width: '100%',
 
     left: 0,
     top: 0,
-    position: "absolute"
+    position: 'absolute'
   },
   burger: {
-    position: "absolute",
+    position: 'absolute',
     left: 8,
     top: 8
   }
