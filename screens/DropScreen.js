@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import Header from "../components/Header";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
+import Header from '../components/Header';
 
 // Passes navigation prop to Header component
 
@@ -18,14 +18,17 @@ const DropScreen = ({ navigation }) => {
       !time ||
       time == Infinity
     ) {
-      return "";
+      return '';
     } else {
       return res;
     }
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={styles.container}
+    >
       <Header navigation={navigation} />
 
       <Text>Mängd (L):</Text>
@@ -33,7 +36,7 @@ const DropScreen = ({ navigation }) => {
         keyboardType="numeric"
         maxLength={10}
         style={styles.amountField}
-        onChangeText={amount => setAmount(amount.replace(/[^0-9]/g, ""))}
+        onChangeText={amount => setAmount(amount.replace(/[^0-9]/g, ''))}
         amount={amount}
       />
 
@@ -42,25 +45,25 @@ const DropScreen = ({ navigation }) => {
         keyboardType="numeric"
         maxLength={10}
         style={styles.amountField}
-        onChangeText={time => setTime(time.replace(/[^0-9]/g, ""))}
+        onChangeText={time => setTime(time.replace(/[^0-9]/g, ''))}
         time={time}
       />
 
       <View>
         <Text>{calculateDropValue()}</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  amountField: { height: 40, borderColor: "gray", borderWidth: 1, width: 200 }
+  amountField: { height: 40, borderColor: 'gray', borderWidth: 1, width: 200 }
 });
 
 export default DropScreen;

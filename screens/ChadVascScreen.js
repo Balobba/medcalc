@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
 import Header from '../components/Header';
 import CheckBox from 'react-native-check-box';
 
@@ -53,7 +53,10 @@ const ChadVascScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={styles.container}
+    >
       <Header navigation={navigation} />
       <View style={styles.fieldView}>
         <Text>Ålder:</Text>
@@ -87,7 +90,7 @@ const ChadVascScreen = ({ navigation }) => {
         </Text>
         <Text>Rekommendationer är {result().recommended}</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

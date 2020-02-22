@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TextInput,
   Picker,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -32,10 +33,14 @@ const Promille = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={styles.container}
+    >
       <Header navigation={navigation} />
 
       <Text>Etanol (i mg etanol per g helblod):</Text>
+
       <TextInput
         keyboardType="numeric"
         maxLength={10}
@@ -71,7 +76,7 @@ const Promille = ({ navigation }) => {
         <Text>Klinisk: {calculateAlcoholLevel()}</Text>
         <Text>Rättslig: {calculateAlcoholLevel()}</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -86,10 +91,10 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     width: 150,
-    marginBottom: Platform.OS === 'ios' ? 100 : 0
+    marginBottom: Platform.OS === 'ios' ? 50 : 0
   },
   resultView: {
-    marginTop: Platform.OS === 'ios' ? 10 : 0
+    marginTop: Platform.OS === 'ios' ? 150 : 0
   }
 });
 
