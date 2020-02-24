@@ -13,22 +13,35 @@ import Header from '../components/Header';
 const Promille = ({ navigation }) => {
   const [ethanol, setEthanol] = useState();
   const [sampletype, setSampletype] = useState();
-  const [unit, setUnit] = useState();
 
   const calculateAlcoholLevel = () => {
-    let res = 0;
+    let resClinic = 0;
+    let resLegal = 0;
+
     //Math.round((20 * parseInt(ethanol) * 1000) / 60 / parseInt(time));
+    let kClinic = 1.16;
+    let kLegal = 1.16 + 2 * 0.0163;
 
     if (sampletype == 'Blood') {
-      res = (ethanol * 0.046) / 1.055;
+      resClinic = (ethanol * 0.046) / 1.055;
+      resLegal = (ethanol * 0.046) / 1.055;
     } else {
-      res = ((ethanol / 1.16) * 0.046) / 1.055 - 0.00163;
+      resClinic = ((ethanol / kClinic) * 0.046) / 1.055; //- 0.00163;
+
+      resLegal = ((ethanol / kLegal) * 0.046) / 1.055; //- 0.00163;
     }
 
-    if (!res || res == Infinity || ethanol == Infinity || !ethanol) {
+    if (
+      !resClinic ||
+      resClinic == Infinity ||
+      ethanol == Infinity ||
+      !ethanol ||
+      !resLegal ||
+      resLegal == Infinity
+    ) {
       return '';
     } else {
-      return res.toFixed(3) + '‰';
+      return [resClinic.toFixed(3) + '‰', resLegal.toFixed(3) + '‰'];
     }
   };
 
@@ -40,42 +53,45 @@ const Promille = ({ navigation }) => {
     >
       <Header navigation={navigation} />
 
-      <Text>Etanol (i mg etanol per g helblod):</Text>
+      <View style={styles.ethanolContainer}>
+        <Text style={styles.ethanolText}>
+          Etanol (i mg etanol per g helblod):
+        </Text>
 
-      <TextInput
-        keyboardType="numeric"
-        maxLength={10}
-        style={styles.ethanolField}
-        onChangeText={ethanol => setEthanol(ethanol.replace(/[^0-9]/g, ''))}
-        ethanol={ethanol}
-      />
+        <TextInput
+          keyboardType="numeric"
+          placeholder='Skriv ett värde, exempelvis "25"'
+          maxLength={10}
+          style={styles.ethanolField}
+          onChangeText={ethanol => setEthanol(ethanol.replace(/[^0-9]/g, ''))}
+          ethanol={ethanol}
+        />
+      </View>
 
-      <Picker
-        selectedValue={sampletype}
-        style={styles.picker}
-        onValueChange={sampleValue => {
-          setSampletype(sampleValue);
-        }}
-      >
-        <Picker.Item label="Serum" value="Serum" />
-        <Picker.Item label="Plasma" value="Plasma" />
-        <Picker.Item label="Blood" value="Blood" />
-      </Picker>
-
-      <Picker
-        selectedValue={unit}
-        style={styles.picker}
-        onValueChange={unitValue => {
-          setUnit(unitValue);
-        }}
-      >
-        <Picker.Item label="mmol/L" value="mmol/L" />
-        <Picker.Item label="mg/ml" value="mg/ml" />
-      </Picker>
+      <View style={styles.pickerContainer}>
+        <Text style={styles.pickerText}>Provtyp (Serum/Plasma/Blod):</Text>
+        <Picker
+          selectedValue={sampletype}
+          style={styles.picker}
+          onValueChange={sampleValue => {
+            setSampletype(sampleValue);
+          }}
+        >
+          <Picker.Item label="Serum" value="Serum" />
+          <Picker.Item label="Plasma" value="Plasma" />
+          <Picker.Item label="Blod" value="Blood" />
+        </Picker>
+      </View>
 
       <View style={styles.resultView}>
-        <Text>Klinisk: {calculateAlcoholLevel()}</Text>
-        <Text>Rättslig: {calculateAlcoholLevel()}</Text>
+        <View style={styles.resultContainerClinic}>
+          <Text style={styles.resText}>Klinisk: </Text>
+          <Text style={styles.resNumberText}>{calculateAlcoholLevel()[0]}</Text>
+        </View>
+        <View style={styles.resultContainerLegal}>
+          <Text style={styles.resText}>Rättslig: </Text>
+          <Text style={styles.resNumberText}>{calculateAlcoholLevel()[1]}</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -88,14 +104,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  ethanolField: { height: 40, borderColor: 'gray', borderWidth: 1, width: 200 },
+  ethanolText: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  ethanolContainer: {
+    flex: 1,
+    paddingTop: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  ethanolField: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: 250,
+    textAlign: 'center',
+    marginTop: 10
+  },
+  pickerText: {
+    textAlign: 'center',
+    fontSize: 20
+  },
   picker: {
     height: 50,
     width: 150,
     marginBottom: Platform.OS === 'ios' ? 100 : 0
   },
+  pickerContainer: {
+    flex: 1,
+    paddingTop: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   resultView: {
-    marginTop: Platform.OS === 'ios' ? 150 : 0
+    marginTop: Platform.OS === 'ios' ? 150 : 0,
+    paddingTop: 100,
+    flex: 3
+  },
+  resText: { fontSize: 30, fontWeight: 'normal', color: '#000' },
+  resNumberText: { fontSize: 40, fontWeight: 'bold', color: '#ff5252' },
+  resultContainerClinic: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  resultContainerLegal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
