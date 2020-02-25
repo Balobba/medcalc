@@ -14,13 +14,13 @@ import ChadVascScreen from '../screens/ChadVascScreen';
 
 const RootDrawerNavigator = createDrawerNavigator(
   {
-    Promille: {
-      screen: PromilleScreen,
+    'CHA2DS2-VASc': {
+      screen: ChadVascScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: 'Promillehalt'
+        title: 'CHA2DS2-VASc'
       }
     },
     Apgar: {
@@ -32,15 +32,16 @@ const RootDrawerNavigator = createDrawerNavigator(
         title: 'Apgar'
       }
     },
-    ChadVasc: {
-      screen: ChadVascScreen,
+    Promillehalt: {
+      screen: PromilleScreen,
       navigationOptions: {
         drawerIcon: () => (
           <MaterialIcons name="accessibility" size={20} style={styles.icons} />
         ),
-        title: 'CHA2DS2-VASc'
+        title: 'Promillehalt'
       }
     },
+
     Dropptakt: {
       screen: DropScreen,
       navigationOptions: {
@@ -50,7 +51,7 @@ const RootDrawerNavigator = createDrawerNavigator(
         title: 'Dropptakt'
       }
     },
-    DVTscore: {
+    'DVT-Score': {
       screen: DVTscoreScreen,
       navigationOptions: {
         drawerIcon: () => (
@@ -60,16 +61,16 @@ const RootDrawerNavigator = createDrawerNavigator(
       }
     },
 
-    Test: {
-      screen: TestScreen,
-      navigationOptions: {
-        drawerIcon: () => (
-          <MaterialIcons name="accessibility" size={20} style={styles.icons} />
-        )
-        //title: "Dropptakt"
-      }
-    },
-    About: {
+    // Test: {
+    //   screen: TestScreen,
+    //   navigationOptions: {
+    //     drawerIcon: () => (
+    //       <MaterialIcons name="accessibility" size={20} style={styles.icons} />
+    //     )
+    //     //title: "Dropptakt"
+    //   }
+    // },
+    Om: {
       screen: AboutScreen,
       navigationOptions: {
         drawerIcon: () => (

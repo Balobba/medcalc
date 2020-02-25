@@ -16,6 +16,7 @@ const Header = ({ navigation }) => {
         style={styles.burger}
         onPress={openMenu}
       />
+      <Text style={styles.headerTitle}>{navigation.state.routeName}</Text>
     </View>
   );
 };
@@ -25,7 +26,6 @@ export default Header;
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-
     left: 0,
     top: 0,
     position: 'absolute'
@@ -34,5 +34,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 8,
     top: 8
+  },
+  headerTitle: {
+    alignSelf: 'center',
+    fontSize: 24,
+    marginTop: 10
   }
 });
