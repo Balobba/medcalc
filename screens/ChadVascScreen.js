@@ -59,10 +59,12 @@ const ChadVascScreen = ({ navigation }) => {
       scrollEnabled={false}
     >
       <Header navigation={navigation} />
+
       <View style={styles.fieldView}>
-        <Text>Ålder:</Text>
+        <Text style={styles.ageText}>Ålder:</Text>
         <TextInput
           keyboardType="numeric"
+          placeholder='Skriv ett värde, exempelvis "25"'
           maxLength={3}
           style={styles.ageField}
           onChangeText={age => setAge(age.replace(/[^0-9]/g, ''))}
@@ -80,16 +82,21 @@ const ChadVascScreen = ({ navigation }) => {
               isChecked={mark.marked}
               leftText={mark.label}
               style={styles.checkbox}
+              /*checkBoxColor={'#ff5252'}*/
             />
           </View>
         ))}
       </View>
-      <View>
-        <Text>{result().points} poäng</Text>
-        <Text>
+      <View style={styles.resView}>
+        <Text style={[styles.resText, styles.resNumber]}>
+          {result().points} poäng
+        </Text>
+        <Text style={styles.resText}>
           Årlig risk för tromboembolisk händelse är {result().procent}%
         </Text>
-        <Text>Rekommendationer är {result().recommended}</Text>
+        <Text style={styles.resText}>
+          Rekommendationer är {result().recommended}
+        </Text>
       </View>
     </ScrollView>
   );
@@ -102,17 +109,41 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   fieldView: {
-    alignItems: 'center'
+    flex: 1,
+    paddingTop: 80,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  ageText: {
+    textAlign: 'center',
+    fontSize: 20
   },
   ageField: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    width: 200
+    width: 250,
+    textAlign: 'center',
+    marginTop: 10
   },
   checkboxesView: {
     alignItems: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 2
+  },
+  resView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 2
+  },
+  resText: {
+    textAlign: 'center',
+    fontSize: 16,
+    paddingBottom: 2,
+    color: '#ff5252'
+  },
+  resNumber: {
+    fontSize: 30
   },
   checkbox: { padding: 10, marginRight: 30, marginLeft: 10 }
 });
