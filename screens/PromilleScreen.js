@@ -39,7 +39,7 @@ const Promille = ({ navigation }) => {
       !resLegal ||
       resLegal == Infinity
     ) {
-      return '';
+      return [0 + '‰', 0 + '‰'];
     } else {
       return [resClinic.toFixed(3) + '‰', resLegal.toFixed(3) + '‰'];
     }
