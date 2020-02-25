@@ -18,9 +18,9 @@ const DropScreen = ({ navigation }) => {
       !time ||
       time == Infinity
     ) {
-      return '';
+      return 0;
     } else {
-      return res.toString() + ' droppar per milliliter';
+      return res;
     }
   };
 
@@ -53,7 +53,9 @@ const DropScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.resContainer}>
-        <Text style={styles.resNumberText}>{calculateDropValue()}</Text>
+        <Text style={styles.resNumberText}>
+          {calculateDropValue()} droppar per milliliter
+        </Text>
       </View>
     </ScrollView>
   );

@@ -78,8 +78,8 @@ const DVTscoreScreen = ({ navigation }) => {
           </View>
         ))}
       </View>
-      <View>
-        <Text>
+      <View style={styles.resContainer}>
+        <Text style={styles.resText}>
           {result().info} ({result().points} poäng)
         </Text>
       </View>
@@ -100,7 +100,13 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center'
   },
-  checkbox: { padding: 10, marginRight: 30, marginLeft: 10 }
+  checkbox: { padding: 10, marginRight: 30, marginLeft: 10 },
+  resContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
+  },
+  resText: { fontSize: 26, fontWeight: 'bold', color: '#ff5252' }
 });
 
 export default DVTscoreScreen;
