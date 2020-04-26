@@ -7,11 +7,11 @@
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/doctor1.png",
+    "icon": "./assets/doctor3.png",
     "splash": {
-      "image": "./assets/splashscreen4.png",
+      "image": "./assets/splashscreen5.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ff5252"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
