@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff5252',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 5,
   },
   textContainer: {
     padding: 10,
