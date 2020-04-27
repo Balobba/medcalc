@@ -9,7 +9,7 @@ const DropScreen = ({ navigation }) => {
   const [time, setTime] = useState();
 
   const calculateDropValue = () => {
-    let res = Math.round((20 * parseInt(amount) * 1000) / 60 / parseInt(time));
+    let res = Math.round((20 * parseInt(amount)) / 60 / parseInt(time));
     if (
       !res ||
       res == Infinity ||
@@ -32,7 +32,7 @@ const DropScreen = ({ navigation }) => {
     >
       <Header navigation={navigation} />
       <View style={styles.inputContainer}>
-        <Text style={styles.fieldText}>Mängd (L):</Text>
+        <Text style={styles.fieldText}>Mängd (ml):</Text>
         <TextInput
           keyboardType="numeric"
           maxLength={10}
@@ -54,7 +54,7 @@ const DropScreen = ({ navigation }) => {
       </View>
       <View style={styles.resContainer}>
         <Text style={styles.resNumberText}>
-          {calculateDropValue()} droppar per milliliter
+          {calculateDropValue()} droppar per minut
         </Text>
       </View>
     </ScrollView>
